@@ -3,7 +3,7 @@
 	<variables>
 		<variable name="baseurl" environment="a">http://www.bing.com</variable>
 	</variables>
-	<test shortdescription="Search for Cows" url="{baseurl}/search?q=cows" method="POST" posttype="" verifyresponsecode="200" errormessage="Oh shit">
+	<test description="Search for Cows" url="{baseurl}/search?q=cows" method="POST" posttype="" verifyresponsecode="200" errormessage="Oh shit">
 		<headers />
 		<postbody />
 		<capturedvariables>
@@ -13,7 +13,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Goats" url="{baseurl}/search?q=goats" method="get" verifyresponsecode="200" errormessage="">
+	<test description="Search for Goats" url="{baseurl}/search?q=goats" method="get" verifyresponsecode="200" errormessage="">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -21,7 +21,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Geese" url="{baseurl}/search?q=geese" method="post" verifyresponsecode="200" errormessage="Oh shit">
+	<test description="Search for Geese" url="{baseurl}/search?q=geese" method="post" verifyresponsecode="200" errormessage="Oh shit">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -29,7 +29,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Fresh air" url="{baseurl}/search?q=fresh air" method="get" verifyresponsecode="200" errormessage="">
+	<test description="Search for Fresh air" url="{baseurl}/search?q=fresh air" method="get" verifyresponsecode="200" errormessage="">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -37,7 +37,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Monkeys" url="{baseurl}/search?q=monkeys" method="post" verifyresponsecode="200" errormessage="Oh shit">
+	<test description="Search for Monkeys" url="{baseurl}/search?q=monkeys" method="post" verifyresponsecode="200" errormessage="Oh shit">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -45,7 +45,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Web inject" url="{baseurl}/search?q=web inject" method="get" verifyresponsecode="200" errormessage="">
+	<test description="Search for Web inject" url="{baseurl}/search?q=web inject" method="get" verifyresponsecode="200" errormessage="">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -53,7 +53,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Github" url="{baseurl}/search?q=github" method="post" verifyresponsecode="200" errormessage="Oh shit">
+	<test description="Search for Github" url="{baseurl}/search?q=github" method="post" verifyresponsecode="200" errormessage="Oh shit">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -61,7 +61,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Anotherchris" url="{baseurl}/search?q=anotherchris" method="get" verifyresponsecode="200" errormessage="">
+	<test description="Search for Anotherchris" url="{baseurl}/search?q=anotherchris" method="get" verifyresponsecode="200" errormessage="">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -69,7 +69,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for AVFC" url="badurl/search?q=avfc" method="post" verifyresponsecode="200" errormessage="Oh shit">
+	<test description="Search for AVFC" url="badurl/search?q=avfc" method="post" verifyresponsecode="200" errormessage="Oh shit">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -77,7 +77,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Duke of cambridge" url="{baseurl}/search?q=duke of cambridge" method="get" verifyresponsecode="200" errormessage="">
+	<test description="Search for Duke of cambridge" url="{baseurl}/search?q=duke of cambridge" method="get" verifyresponsecode="200" errormessage="">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -85,7 +85,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Cows" url="{baseurl}/search?q=cows" method="post" verifyresponsecode="200" errormessage="Oh shit">
+	<test description="Search for Cows" url="{baseurl}/search?q=cows" method="post" verifyresponsecode="200" errormessage="Oh shit">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -93,7 +93,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Goats" url="{baseurl}/search?q=goats" method="get" verifyresponsecode="200" errormessage="">
+	<test description="Search for Goats" url="{baseurl}/search?q=goats" method="get" verifyresponsecode="200" errormessage="">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -101,7 +101,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Geese" url="{baseurl}/search?q=geese" method="post" verifyresponsecode="200" errormessage="Oh shit">
+	<test description="Search for Geese" url="{baseurl}/search?q=geese" method="post" verifyresponsecode="200" errormessage="Oh shit">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -109,7 +109,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Fresh air" url="{baseurl}/search?q=fresh air" method="get" verifyresponsecode="200" errormessage="">
+	<test description="Search for Fresh air" url="{baseurl}/search?q=fresh air" method="get" verifyresponsecode="200" errormessage="">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -117,7 +117,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Monkeys" url="{baseurl}/search?q=monkeys" method="post" verifyresponsecode="200" errormessage="Oh shit">
+	<test description="Search for Monkeys" url="{baseurl}/search?q=monkeys" method="post" verifyresponsecode="200" errormessage="Oh shit">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -125,7 +125,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Web inject" url="{baseurl}/search?q=web inject" method="get" verifyresponsecode="200" errormessage="">
+	<test description="Search for Web inject" url="{baseurl}/search?q=web inject" method="get" verifyresponsecode="200" errormessage="">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -133,7 +133,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Github" url="{baseurl}/search?q=github" method="post" verifyresponsecode="200" errormessage="Oh shit">
+	<test description="Search for Github" url="{baseurl}/search?q=github" method="post" verifyresponsecode="200" errormessage="Oh shit">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -141,7 +141,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Anotherchris" url="{baseurl}/search?q=anotherchris" method="get" verifyresponsecode="200" errormessage="">
+	<test description="Search for Anotherchris" url="{baseurl}/search?q=anotherchris" method="get" verifyresponsecode="200" errormessage="">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -149,7 +149,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for AVFC" url="badurl/search?q=avfc" method="post" verifyresponsecode="200" errormessage="Oh shit">
+	<test description="Search for AVFC" url="badurl/search?q=avfc" method="post" verifyresponsecode="200" errormessage="Oh shit">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -157,7 +157,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Duke of cambridge" url="{baseurl}/search?q=duke of cambridge" method="get" verifyresponsecode="200" errormessage="">
+	<test description="Search for Duke of cambridge" url="{baseurl}/search?q=duke of cambridge" method="get" verifyresponsecode="200" errormessage="">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -165,7 +165,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Cows" url="{baseurl}/search?q=cows" method="post" verifyresponsecode="200" errormessage="Oh shit">
+	<test description="Search for Cows" url="{baseurl}/search?q=cows" method="post" verifyresponsecode="200" errormessage="Oh shit">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -173,7 +173,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Goats" url="{baseurl}/search?q=goats" method="get" verifyresponsecode="200" errormessage="">
+	<test description="Search for Goats" url="{baseurl}/search?q=goats" method="get" verifyresponsecode="200" errormessage="">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -181,7 +181,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Geese" url="{baseurl}/search?q=geese" method="post" verifyresponsecode="200" errormessage="Oh shit">
+	<test description="Search for Geese" url="{baseurl}/search?q=geese" method="post" verifyresponsecode="200" errormessage="Oh shit">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -189,7 +189,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Fresh air" url="{baseurl}/search?q=fresh air" method="get" verifyresponsecode="200" errormessage="">
+	<test description="Search for Fresh air" url="{baseurl}/search?q=fresh air" method="get" verifyresponsecode="200" errormessage="">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -197,7 +197,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Monkeys" url="{baseurl}/search?q=monkeys" method="post" verifyresponsecode="200" errormessage="Oh shit">
+	<test description="Search for Monkeys" url="{baseurl}/search?q=monkeys" method="post" verifyresponsecode="200" errormessage="Oh shit">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -205,7 +205,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Web inject" url="{baseurl}/search?q=web inject" method="get" verifyresponsecode="200" errormessage="">
+	<test description="Search for Web inject" url="{baseurl}/search?q=web inject" method="get" verifyresponsecode="200" errormessage="">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -213,7 +213,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Github" url="{baseurl}/search?q=github" method="post" verifyresponsecode="200" errormessage="Oh shit">
+	<test description="Search for Github" url="{baseurl}/search?q=github" method="post" verifyresponsecode="200" errormessage="Oh shit">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -221,7 +221,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Anotherchris" url="{baseurl}/search?q=anotherchris" method="get" verifyresponsecode="200" errormessage="">
+	<test description="Search for Anotherchris" url="{baseurl}/search?q=anotherchris" method="get" verifyresponsecode="200" errormessage="">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -229,7 +229,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for AVFC" url="badurl/search?q=avfc" method="post" verifyresponsecode="200" errormessage="Oh shit">
+	<test description="Search for AVFC" url="badurl/search?q=avfc" method="post" verifyresponsecode="200" errormessage="Oh shit">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -237,7 +237,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Duke of cambridge" url="{baseurl}/search?q=duke of cambridge" method="get" verifyresponsecode="200" errormessage="">
+	<test description="Search for Duke of cambridge" url="{baseurl}/search?q=duke of cambridge" method="get" verifyresponsecode="200" errormessage="">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -245,7 +245,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Cows" url="{baseurl}/search?q=cows" method="post" verifyresponsecode="200" errormessage="Oh shit">
+	<test description="Search for Cows" url="{baseurl}/search?q=cows" method="post" verifyresponsecode="200" errormessage="Oh shit">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -253,7 +253,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Goats" url="{baseurl}/search?q=goats" method="get" verifyresponsecode="200" errormessage="">
+	<test description="Search for Goats" url="{baseurl}/search?q=goats" method="get" verifyresponsecode="200" errormessage="">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -261,7 +261,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Geese" url="{baseurl}/search?q=geese" method="post" verifyresponsecode="200" errormessage="Oh shit">
+	<test description="Search for Geese" url="{baseurl}/search?q=geese" method="post" verifyresponsecode="200" errormessage="Oh shit">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -269,7 +269,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Fresh air" url="{baseurl}/search?q=fresh air" method="get" verifyresponsecode="200" errormessage="">
+	<test description="Search for Fresh air" url="{baseurl}/search?q=fresh air" method="get" verifyresponsecode="200" errormessage="">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -277,7 +277,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Monkeys" url="{baseurl}/search?q=monkeys" method="post" verifyresponsecode="200" errormessage="Oh shit">
+	<test description="Search for Monkeys" url="{baseurl}/search?q=monkeys" method="post" verifyresponsecode="200" errormessage="Oh shit">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -285,7 +285,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Web inject" url="{baseurl}/search?q=web inject" method="get" verifyresponsecode="200" errormessage="">
+	<test description="Search for Web inject" url="{baseurl}/search?q=web inject" method="get" verifyresponsecode="200" errormessage="">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -293,7 +293,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Github" url="{baseurl}/search?q=github" method="post" verifyresponsecode="200" errormessage="Oh shit">
+	<test description="Search for Github" url="{baseurl}/search?q=github" method="post" verifyresponsecode="200" errormessage="Oh shit">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -301,7 +301,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Anotherchris" url="{baseurl}/search?q=anotherchris" method="get" verifyresponsecode="200" errormessage="">
+	<test description="Search for Anotherchris" url="{baseurl}/search?q=anotherchris" method="get" verifyresponsecode="200" errormessage="">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -309,7 +309,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for AVFC" url="badurl/search?q=avfc" method="post" verifyresponsecode="200" errormessage="Oh shit">
+	<test description="Search for AVFC" url="badurl/search?q=avfc" method="post" verifyresponsecode="200" errormessage="Oh shit">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -317,7 +317,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Duke of cambridge" url="{baseurl}/search?q=duke of cambridge" method="get" verifyresponsecode="200" errormessage="">
+	<test description="Search for Duke of cambridge" url="{baseurl}/search?q=duke of cambridge" method="get" verifyresponsecode="200" errormessage="">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -325,7 +325,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Cows" url="{baseurl}/search?q=cows" method="post" verifyresponsecode="200" errormessage="Oh shit">
+	<test description="Search for Cows" url="{baseurl}/search?q=cows" method="post" verifyresponsecode="200" errormessage="Oh shit">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -333,7 +333,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Goats" url="{baseurl}/search?q=goats" method="get" verifyresponsecode="200" errormessage="">
+	<test description="Search for Goats" url="{baseurl}/search?q=goats" method="get" verifyresponsecode="200" errormessage="">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -341,7 +341,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Geese" url="{baseurl}/search?q=geese" method="post" verifyresponsecode="200" errormessage="Oh shit">
+	<test description="Search for Geese" url="{baseurl}/search?q=geese" method="post" verifyresponsecode="200" errormessage="Oh shit">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -349,7 +349,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Fresh air" url="{baseurl}/search?q=fresh air" method="get" verifyresponsecode="200" errormessage="">
+	<test description="Search for Fresh air" url="{baseurl}/search?q=fresh air" method="get" verifyresponsecode="200" errormessage="">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -357,7 +357,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Monkeys" url="{baseurl}/search?q=monkeys" method="post" verifyresponsecode="200" errormessage="Oh shit">
+	<test description="Search for Monkeys" url="{baseurl}/search?q=monkeys" method="post" verifyresponsecode="200" errormessage="Oh shit">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -365,7 +365,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Web inject" url="{baseurl}/search?q=web inject" method="get" verifyresponsecode="200" errormessage="">
+	<test description="Search for Web inject" url="{baseurl}/search?q=web inject" method="get" verifyresponsecode="200" errormessage="">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -373,7 +373,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Github" url="{baseurl}/search?q=github" method="post" verifyresponsecode="200" errormessage="Oh shit">
+	<test description="Search for Github" url="{baseurl}/search?q=github" method="post" verifyresponsecode="200" errormessage="Oh shit">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -381,7 +381,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Anotherchris" url="{baseurl}/search?q=anotherchris" method="get" verifyresponsecode="200" errormessage="">
+	<test description="Search for Anotherchris" url="{baseurl}/search?q=anotherchris" method="get" verifyresponsecode="200" errormessage="">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -389,7 +389,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for AVFC" url="badurl/search?q=avfc" method="post" verifyresponsecode="200" errormessage="Oh shit">
+	<test description="Search for AVFC" url="badurl/search?q=avfc" method="post" verifyresponsecode="200" errormessage="Oh shit">
 		<headers />
 		<postbody />
 		<capturedvariables />
@@ -397,7 +397,7 @@
 			<assertion description="Text doesn't exist" type="negative">Google</assertion>
 		</assertions>
 	</test>
-	<test shortdescription="Search for Duke of cambridge" url="{baseurl}/search?q=duke of cambridge" method="get" verifyresponsecode="200" errormessage="">
+	<test description="Search for Duke of cambridge" url="{baseurl}/search?q=duke of cambridge" method="get" verifyresponsecode="200" errormessage="">
 		<headers />
 		<postbody />
 		<capturedvariables />

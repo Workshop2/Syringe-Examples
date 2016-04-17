@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tests>
+	<variables>
+		<variable name="baseurl" environment="a">http://www.bing.com</variable>
+	</variables>
+	<test description="Search for Cows" url="{baseurl}/search?q=cows" method="POST" posttype="" verifyresponsecode="200" errormessage="Oh shit">
+		<headers />
+		<postbody />
+		<capturedvariables>
+			<variable name="test">&lt;this should work&gt;</variable>
+		</capturedvariables>
+		<assertions>
+			<assertion description="Text doesn't exist" type="negative">Google</assertion>
+		</assertions>
+	</test>
+	<test description="Search for Goats" url="{baseurl}/search?q=goats" method="get" verifyresponsecode="200" errormessage="">
+		<headers />
+		<postbody />
+		<capturedvariables />
+		<assertions>
+			<assertion description="Text doesn't exist" type="negative">Google</assertion>
+		</assertions>
+	</test>
+	<test description="Search for Geese" url="{baseurl}/search?q=geese" method="post" verifyresponsecode="200" errormessage="Oh shit">
+		<headers />
+		<postbody />
+		<capturedvariables />
+		<assertions>
+			<assertion description="Text doesn't exist" type="negative">Google</assertion>
+		</assertions>
+	</test>
+	<test description="Search for Fresh air" url="{baseurl}/search?q=fresh air" method="get" verifyresponsecode="200" errormessage="">
+		<headers />
+		<postbody />
+		<capturedvariables />
+		<assertions>
+			<assertion description="Text doesn't exist" type="negative">Google</assertion>
+		</assertions>
+	</test>
+	<test description="Search for Monkeys" url="{baseurl}/search?q=monkeys" method="post" verifyresponsecode="200" errormessage="Oh shit">
+		<headers />
+		<postbody />
+		<capturedvariables />
+		<assertions>
+			<assertion description="Text doesn't exist" type="negative">Google</assertion>
+		</assertions>
+	</test>
+</tests>
