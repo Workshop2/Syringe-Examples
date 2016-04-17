@@ -3,14 +3,14 @@
 	<variables>
 		<variable name="baseurl" environment="a">http://www.bing.com</variable>
 	</variables>
-	<test description="Search for Cows" url="{baseurl}/search?q=cows" method="POST" posttype="" verifyresponsecode="200" errormessage="Oh shit">
+	<test description="Search for Cows" url="{baseurl}/search?q=cows" method="GET" verifyresponsecode="200" errormessage="Oh shit">
 		<headers />
 		<postbody />
 		<capturedvariables>
 			<variable name="test">&lt;this should work&gt;</variable>
 		</capturedvariables>
 		<assertions>
-			<assertion description="Text doesn't exist" type="negative">Google</assertion>
+			<assertion description="blah" type="negative" method="csquery">blah blah</assertion>
 		</assertions>
 	</test>
 	<test description="Search for Goats" url="{baseurl}/search?q=goats" method="get" verifyresponsecode="200" errormessage="">
@@ -18,7 +18,7 @@
 		<postbody />
 		<capturedvariables />
 		<assertions>
-			<assertion description="Text doesn't exist" type="negative">Google</assertion>
+			<assertion description="Text doesn't exist" type="negative" method="regex">Google</assertion>
 		</assertions>
 	</test>
 	<test description="Search for Geese" url="{baseurl}/search?q=geese" method="post" verifyresponsecode="200" errormessage="Oh shit">
@@ -26,7 +26,7 @@
 		<postbody />
 		<capturedvariables />
 		<assertions>
-			<assertion description="Text doesn't exist" type="negative">Google</assertion>
+			<assertion description="Text doesn't exist" type="negative" method="regex">Google</assertion>
 		</assertions>
 	</test>
 	<test description="Search for Fresh air" url="{baseurl}/search?q=fresh air" method="get" verifyresponsecode="200" errormessage="">
@@ -34,7 +34,7 @@
 		<postbody />
 		<capturedvariables />
 		<assertions>
-			<assertion description="Text doesn't exist" type="negative">Google</assertion>
+			<assertion description="Text doesn't exist" type="negative" method="regex">Google</assertion>
 		</assertions>
 	</test>
 	<test description="Search for Monkeys" url="{baseurl}/search?q=monkeys" method="post" verifyresponsecode="200" errormessage="Oh shit">
@@ -42,7 +42,7 @@
 		<postbody />
 		<capturedvariables />
 		<assertions>
-			<assertion description="Text doesn't exist" type="negative">Google</assertion>
+			<assertion description="Text doesn't exist" type="negative" method="regex">Google</assertion>
 		</assertions>
 	</test>
 </tests>
