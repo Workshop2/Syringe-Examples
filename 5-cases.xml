@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <tests>
 	<variables>
-		<variable name="baseurl" environment="a">http://www.bing.com</variable>
+		<variable name="baseurl" environment="Development">http://www.bing.com</variable>
 	</variables>
 	<test description="Search for Cows" url="{baseurl}/search?q=cows" method="GET" expectedhttpstatuscode="200">
 		<headers />
