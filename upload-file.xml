@@ -10,7 +10,10 @@
 			<variable name="deletionUrl">(http://postimg.org/delete/.+/)&lt;</variable>
 		</capturedvariables>
 		<assertions />
-		<beforeExecuteScript><![CDATA[Request.AddFile("upload[]", @"C:\Code\syringe\Xml-Examples\cows.jpg");]]></beforeExecuteScript>
+		<beforeExecuteScript><![CDATA[using System.IO;
+
+string fullPath = Path.Combine(Configuration.TestFilesBaseDirectory, "cows.jpg");
+Request.AddFile("upload[]", fullPath);]]></beforeExecuteScript>
 	</test>
 	<test description="Delete image" url="{capturedvariabledeletionUrl}" method="POST" expectedhttpstatuscode="200">
 		<headers />
