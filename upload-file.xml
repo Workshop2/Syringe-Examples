@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tests>
+	<variables>
+		<variable name="baseurl" environment="Development">http://postimage.org</variable>
+	</variables>
+	<test description="Upload image" url="{baseurl}" method="POST" expectedhttpstatuscode="200">
+		<headers />
+		<postbody />
+		<capturedvariables>
+			<variable name="deletionUrl">(http://postimg.org/delete/.+/)&lt;</variable>
+		</capturedvariables>
+		<assertions />
+		<beforeExecuteScript><![CDATA[Request.AddFile("upload[]", @"C:\Code\syringe\Xml-Examples\cows.jpg");]]></beforeExecuteScript>
+	</test>
+	<test description="Delete image" url="{capturedvariabledeletionUrl}" method="POST" expectedhttpstatuscode="200">
+		<headers />
+		<postbody><![CDATA[delete=Delete]]></postbody>
+		<capturedvariables />
+		<assertions>
+			<assertion description="Succesful post" type="positive" method="regex">Upload another image</assertion>
+		</assertions>
+		<beforeExecuteScript />
+	</test>
+</tests>
