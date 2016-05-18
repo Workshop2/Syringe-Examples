@@ -1,0 +1,131 @@
+{
+  "Tests": [
+    {
+      "Description": "Landing Page",
+      "Method": "GET",
+      "Url": "{baseurl}",
+      "PostBody": null,
+      "ExpectedHttpStatusCode": 200,
+      "Headers": [],
+      "CapturedVariables": [
+        {
+          "Name": "new-test-file-page-url",
+          "Regex": "<a .*?title=\"Add\".*?href=\"(.*?)\">"
+        }
+      ],
+      "Assertions": [
+        {
+          "Description": "Should be running in guest mode",
+          "AssertionMethod": 0,
+          "Value": "<h1>Login<\\/h1>",
+          "AssertionType": 1
+        },
+        {
+          "Description": "Should display H2",
+          "AssertionMethod": 0,
+          "Value": "<h2>Test Files</h2>",
+          "AssertionType": 0
+        },
+        {
+          "Description": "Should contain add button",
+          "AssertionMethod": 0,
+          "Value": "<i(.*?)>add<\\/i>",
+          "AssertionType": 0
+        },
+        {
+          "Description": "Should not have test file (please delete)",
+          "AssertionMethod": 0,
+          "Value": "<td class=\"filename\">{test-file-name}.json<\\/td>",
+          "AssertionType": 1
+        }
+      ],
+      "BeforeExecuteScript": null
+    },
+    {
+      "Description": "New test file page",
+      "Method": "GET",
+      "Url": "{baseurl}{new-test-file-page-url}",
+      "PostBody": null,
+      "ExpectedHttpStatusCode": 200,
+      "Headers": [],
+      "CapturedVariables": [
+        {
+          "Name": "create-new-test-file-url",
+          "Regex": "<form action=\"(.*?)\".*?"
+        }
+      ],
+      "Assertions": [
+        {
+          "Description": "Should be on add test page",
+          "AssertionMethod": 0,
+          "Value": "<title>Add test - Syringe<\\/title>",
+          "AssertionType": 0
+        }
+      ],
+      "BeforeExecuteScript": null
+    },
+    {
+      "Description": "Create new test file",
+      "Method": "POST",
+      "Url": "{baseurl}{create-new-test-file-url}",
+      "PostBody": "Filename={test-file-name}",
+      "ExpectedHttpStatusCode": 200,
+      "Headers": [],
+      "CapturedVariables": [
+        {
+          "Name": "edit-test-file-path",
+          "Regex": "<a.*?title=\"View\".*?href=\"(.*?{test-file-name}\\.json)\">"
+        }
+      ],
+      "Assertions": [
+        {
+          "Description": "Should display expected H2",
+          "AssertionMethod": 0,
+          "Value": "<h2>Test Files</h2>",
+          "AssertionType": 0
+        },
+        {
+          "Description": "Should display test file in window",
+          "AssertionMethod": 0,
+          "Value": "<td class=\"filename\">{test-file-name}.json<\\/td>",
+          "AssertionType": 0
+        }
+      ],
+      "BeforeExecuteScript": null
+    },
+    {
+      "Description": "Edit Test File",
+      "Method": "GET",
+      "Url": "{baseurl}{edit-test-file-path} ",
+      "PostBody": null,
+      "ExpectedHttpStatusCode": 200,
+      "Headers": [],
+      "CapturedVariables": [],
+      "Assertions": [
+        {
+          "Description": "Should be on edit test page",
+          "AssertionMethod": 0,
+          "Value": "<title>Viewing {test-file-name}.json - Syringe<\\/title>",
+          "AssertionType": 0
+        }
+      ],
+      "BeforeExecuteScript": null
+    }
+  ],
+  "Variables": [
+    {
+      "Name": "baseurl",
+      "Value": "http://localhost:1980",
+      "Environment": {
+        "Name": "Development"
+      }
+    },
+    {
+      "Name": "test-file-name",
+      "Value": "syring-acceptance-test",
+      "Environment": {
+        "Name": "Development"
+      }
+    }
+  ]
+}
