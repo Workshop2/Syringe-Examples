@@ -10,7 +10,8 @@
       "CapturedVariables": [
         {
           "Name": "new-test-file-page-url",
-          "Regex": "<a .*?title=\"Add\".*?href=\"(.*?)\">"
+          "Regex": "<a .*?title=\"Add\".*?href=\"(.*?)\">",
+          "PostProcessorType": 1
         }
       ],
       "Assertions": [
@@ -51,7 +52,8 @@
       "CapturedVariables": [
         {
           "Name": "create-new-test-file-url",
-          "Regex": "<form action=\"(.*?)\".*?"
+          "Regex": "<form action=\"(.*?)\".*?",
+          "PostProcessorType": 1
         }
       ],
       "Assertions": [
@@ -74,7 +76,8 @@
       "CapturedVariables": [
         {
           "Name": "edit-test-file-path",
-          "Regex": "<a.*?title=\"View\".*?href=\"(.*?{test-file-name}\\.json)\">"
+          "Regex": "<a title=\"View\".*?href=\"(.*?{test-file-name}\\.json)\">",
+          "PostProcessorType": 1
         }
       ],
       "Assertions": [
@@ -100,7 +103,13 @@
       "PostBody": null,
       "ExpectedHttpStatusCode": 200,
       "Headers": [],
-      "CapturedVariables": [],
+      "CapturedVariables": [
+        {
+          "Name": "view-variables-path",
+          "Regex": "<a.*?href=\"(.*?filename={test-file-name}.json.*?)\">Variables<\\/a>",
+          "PostProcessorType": 1
+        }
+      ],
       "Assertions": [
         {
           "Description": "Should be on edit test page",
@@ -109,6 +118,34 @@
           "AssertionType": 0
         }
       ],
+      "BeforeExecuteScript": null
+    },
+    {
+      "Description": "View Variables Page",
+      "Method": "GET",
+      "Url": "{baseurl}{view-variables-path}",
+      "PostBody": null,
+      "ExpectedHttpStatusCode": 200,
+      "Headers": [],
+      "CapturedVariables": [
+        {
+          "Name": "edit-variables-path",
+          "Regex": "<form action=\"(.*?{test-file-name}.*?)\" method=\"post\".*?>",
+          "PostProcessorType": 1
+        }
+      ],
+      "Assertions": [],
+      "BeforeExecuteScript": null
+    },
+    {
+      "Description": "Should Create Variable",
+      "Method": "POST",
+      "Url": "{baseurl}{edit-variables-path}",
+      "PostBody": "Filename:{test-file-name}.json\r\nVariables[0].Environment:Development\r\nVariables[0].Name:KEY-NAME\r\nVariables[0].Value:VALUE-VALUE",
+      "ExpectedHttpStatusCode": 200,
+      "Headers": [],
+      "CapturedVariables": [],
+      "Assertions": [],
       "BeforeExecuteScript": null
     }
   ],
@@ -122,7 +159,7 @@
     },
     {
       "Name": "test-file-name",
-      "Value": "syring-acceptance-test",
+      "Value": "syringe-acceptance-test",
       "Environment": {
         "Name": "Development"
       }
