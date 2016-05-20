@@ -9,7 +9,7 @@
       "Headers": [],
       "CapturedVariables": [
         {
-          "Name": "new-test-file-page-url",
+          "Name": "new-test-file-page-path",
           "Regex": "<a .*?title=\"Add\".*?href=\"(.*?)\">",
           "PostProcessorType": 1
         }
@@ -45,13 +45,13 @@
     {
       "Description": "New test file page",
       "Method": "GET",
-      "Url": "{baseurl}{new-test-file-page-url}",
+      "Url": "{baseurl}{new-test-file-page-path}",
       "PostBody": null,
       "ExpectedHttpStatusCode": 200,
       "Headers": [],
       "CapturedVariables": [
         {
-          "Name": "create-new-test-file-url",
+          "Name": "create-new-test-file-path",
           "Regex": "<form action=\"(.*?)\".*?",
           "PostProcessorType": 1
         }
@@ -69,7 +69,7 @@
     {
       "Description": "Create new test file",
       "Method": "POST",
-      "Url": "{baseurl}{create-new-test-file-url}",
+      "Url": "{baseurl}{create-new-test-file-path}",
       "PostBody": "Filename={test-file-name}",
       "ExpectedHttpStatusCode": 200,
       "Headers": [],
@@ -142,6 +142,23 @@
       "Method": "POST",
       "Url": "{baseurl}{edit-variables-path}",
       "PostBody": "Filename={test-file-name}.json&Variables%5B0%5D.Environment=Development&Variables%5B0%5D.Name=TEST-VARIABLE&Variables%5B0%5D.Value=TEST-VAR-VAL",
+      "ExpectedHttpStatusCode": 200,
+      "Headers": [],
+      "CapturedVariables": [
+        {
+          "Name": "view-new-test-path",
+          "Regex": "<a.*?href=\"(.*?{test-file-name}.json.*?)\">Add",
+          "PostProcessorType": 1
+        }
+      ],
+      "Assertions": [],
+      "BeforeExecuteScript": null
+    },
+    {
+      "Description": "View new test page",
+      "Method": "GET",
+      "Url": "{baseurl}{view-new-test-path}",
+      "PostBody": null,
       "ExpectedHttpStatusCode": 200,
       "Headers": [],
       "CapturedVariables": [],
