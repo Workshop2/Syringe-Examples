@@ -141,7 +141,7 @@
       "Description": "Should Create Variable",
       "Method": "POST",
       "Url": "{baseurl}{edit-variables-path}",
-      "PostBody": "Filename={test-file-name}.json&Variables%5B0%5D.Environment=Development&Variables%5B0%5D.Name=TEST-VARIABLE&Variables%5B0%5D.Value=TEST-VAR-VAL",
+      "PostBody": "Filename={test-file-name}.json&Variables%5B0%5D.Environment=Development&Variables%5B0%5D.Name={variable-name}&Variables%5B0%5D.Value={variable-value}",
       "ExpectedHttpStatusCode": 200,
       "Headers": [],
       "CapturedVariables": [
@@ -155,6 +155,36 @@
       "BeforeExecuteScript": null
     },
     {
+      "Description": "Ensure variables are saved",
+      "Method": "GET",
+      "Url": "{baseurl}{view-variables-path}",
+      "PostBody": null,
+      "ExpectedHttpStatusCode": 200,
+      "Headers": [],
+      "CapturedVariables": [],
+      "Assertions": [
+        {
+          "Description": "Should contain variable title",
+          "AssertionMethod": 0,
+          "Value": "<input.*?value=\"{variable-name}\" \\/>",
+          "AssertionType": 0
+        },
+        {
+          "Description": "Should contain variable value",
+          "AssertionMethod": 0,
+          "Value": "<input.*?value=\"{variable-value}\" \\/>",
+          "AssertionType": 0
+        },
+        {
+          "Description": "Should contain env",
+          "AssertionMethod": 0,
+          "Value": "<option selected=\"selected\" value=\"Development\">Development<\\/option>",
+          "AssertionType": 0
+        }
+      ],
+      "BeforeExecuteScript": null
+    },
+    {
       "Description": "View new test page",
       "Method": "GET",
       "Url": "{baseurl}{view-new-test-path}",
@@ -162,7 +192,20 @@
       "ExpectedHttpStatusCode": 200,
       "Headers": [],
       "CapturedVariables": [],
-      "Assertions": [],
+      "Assertions": [
+        {
+          "Description": "Should display available variables",
+          "AssertionMethod": 0,
+          "Value": "<strong>Available variables<\\/strong>",
+          "AssertionType": 0
+        },
+        {
+          "Description": "Should contain created variables",
+          "AssertionMethod": 0,
+          "Value": "{{variable-name}} - {variable-value}",
+          "AssertionType": 0
+        }
+      ],
       "BeforeExecuteScript": null
     }
   ],
@@ -177,6 +220,20 @@
     {
       "Name": "test-file-name",
       "Value": "syringe-acceptance-test",
+      "Environment": {
+        "Name": "Development"
+      }
+    },
+    {
+      "Name": "variable-name",
+      "Value": "TEST-VARIABLE-NAME",
+      "Environment": {
+        "Name": "Development"
+      }
+    },
+    {
+      "Name": "variable-value",
+      "Value": "TEST-VARIABLE-VALUE",
       "Environment": {
         "Name": "Development"
       }
