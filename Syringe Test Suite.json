@@ -141,7 +141,7 @@
       "Description": "Should Create Variable",
       "Method": "POST",
       "Url": "{baseurl}{edit-variables-path}",
-      "PostBody": "Filename:{test-file-name}.json\r\nVariables[0].Environment:Development\r\nVariables[0].Name:KEY-NAME\r\nVariables[0].Value:VALUE-VALUE",
+      "PostBody": "Filename={test-file-name}.json&Variables%5B0%5D.Environment=Development&Variables%5B0%5D.Name=TEST-VARIABLE&Variables%5B0%5D.Value=TEST-VAR-VAL",
       "ExpectedHttpStatusCode": 200,
       "Headers": [],
       "CapturedVariables": [],
