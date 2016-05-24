@@ -191,7 +191,13 @@
       "PostBody": null,
       "ExpectedHttpStatusCode": 200,
       "Headers": [],
-      "CapturedVariables": [],
+      "CapturedVariables": [
+        {
+          "Name": "create-new-test-url",
+          "Regex": "<form.*?action=\"(.*?{test-file-name}.*?)\"",
+          "PostProcessorType": 1
+        }
+      ],
       "Assertions": [
         {
           "Description": "Should display available variables",
@@ -206,6 +212,17 @@
           "AssertionType": 0
         }
       ],
+      "BeforeExecuteScript": null
+    },
+    {
+      "Description": "Create new test file",
+      "Method": "POST",
+      "Url": "{baseurl}{create-new-test-url}",
+      "PostBody": "Description=DESCRIPTION-HERE&Url=URL-HERE&Method=1&ExpectedHttpStatusCode=200&PostBody=POST-HERE&Headers%5B0%5D.Key=HEADER-KEY-HERE&Headers%5B0%5D.Value=HEADER-VALUE-HERE&CapturedVariables%5B0%5D.Name=CAPTURED-TEST-NAME-HERE&CapturedVariables%5B0%5D.Regex=CAPTURED-TEST-REGEX-HERE&CapturedVariables%5B0%5D.PostProcessorType=1&Assertions%5B0%5D.Description=ASSERTION-TITLE-HERE&Assertions%5B0%5D.Value=ASSERTION-VAL-HERE&Assertions%5B0%5D.AssertionType=0&Assertions%5B0%5D.AssertionMethod=0&BeforeExecuteScript=SCRIPT-HERE",
+      "ExpectedHttpStatusCode": 200,
+      "Headers": [],
+      "CapturedVariables": [],
+      "Assertions": [],
       "BeforeExecuteScript": null
     }
   ],
