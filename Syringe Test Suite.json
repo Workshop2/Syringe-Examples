@@ -218,11 +218,95 @@
       "Description": "Create new test file",
       "Method": "POST",
       "Url": "{baseurl}{create-new-test-url}",
-      "PostBody": "Description=DESCRIPTION-HERE&Url=URL-HERE&Method=1&ExpectedHttpStatusCode=200&PostBody=POST-HERE&Headers%5B0%5D.Key=HEADER-KEY-HERE&Headers%5B0%5D.Value=HEADER-VALUE-HERE&CapturedVariables%5B0%5D.Name=CAPTURED-TEST-NAME-HERE&CapturedVariables%5B0%5D.Regex=CAPTURED-TEST-REGEX-HERE&CapturedVariables%5B0%5D.PostProcessorType=1&Assertions%5B0%5D.Description=ASSERTION-TITLE-HERE&Assertions%5B0%5D.Value=ASSERTION-VAL-HERE&Assertions%5B0%5D.AssertionType=0&Assertions%5B0%5D.AssertionMethod=0&BeforeExecuteScript=SCRIPT-HERE",
+      "PostBody": "Description=DESCRIPTION-HERE&Url=URL-HERE&Method=1&ExpectedHttpStatusCode=302&PostBody=POST-HERE&Headers%5B0%5D.Key=HEADER-KEY-HERE&Headers%5B0%5D.Value=HEADER-VALUE-HERE&CapturedVariables%5B0%5D.Name=CAPTURED-TEST-NAME-HERE&CapturedVariables%5B0%5D.Regex=CAPTURED-TEST-REGEX-HERE&CapturedVariables%5B0%5D.PostProcessorType=1&Assertions%5B0%5D.Description=ASSERTION-TITLE-HERE&Assertions%5B0%5D.Value=ASSERTION-VAL-HERE&Assertions%5B0%5D.AssertionType=0&Assertions%5B0%5D.AssertionMethod=0&BeforeExecuteScript=SCRIPT-HERE",
+      "ExpectedHttpStatusCode": 200,
+      "Headers": [],
+      "CapturedVariables": [
+        {
+          "Name": "view-test-path",
+          "Regex": "<a.*?href=\"(.*?Edit.*?{test-file-name}.*?)\">",
+          "PostProcessorType": 1
+        }
+      ],
+      "Assertions": [],
+      "BeforeExecuteScript": null
+    },
+    {
+      "Description": "View test case page",
+      "Method": "GET",
+      "Url": "{baseurl}{view-test-path}",
+      "PostBody": null,
       "ExpectedHttpStatusCode": 200,
       "Headers": [],
       "CapturedVariables": [],
-      "Assertions": [],
+      "Assertions": [
+        {
+          "Description": "Should contain created variables",
+          "AssertionMethod": 0,
+          "Value": "{{variable-name}} - {variable-value}",
+          "AssertionType": 0
+        },
+        {
+          "Description": "Should contain captured variable",
+          "AssertionMethod": 0,
+          "Value": "{CAPTURED-TEST-NAME-HERE} - CAPTURED-TEST-REGEX-HERE",
+          "AssertionType": 0
+        },
+        {
+          "Description": "Should contain expected description",
+          "AssertionMethod": 0,
+          "Value": "<input.*?value=\"DESCRIPTION-HERE\"",
+          "AssertionType": 0
+        },
+        {
+          "Description": "Should contain expected URL",
+          "AssertionMethod": 0,
+          "Value": "<input.*?value=\"URL-HERE\"",
+          "AssertionType": 0
+        },
+        {
+          "Description": "Should contain expected METHOD",
+          "AssertionMethod": 0,
+          "Value": "<option selected=\"selected\" value=\"1\">POST",
+          "AssertionType": 0
+        },
+        {
+          "Description": "Should contain expected HTTP Status",
+          "AssertionMethod": 0,
+          "Value": "<option selected=\"selected\" value=\"302\">Found (302)",
+          "AssertionType": 0
+        },
+        {
+          "Description": "Should contain expected Post Body",
+          "AssertionMethod": 0,
+          "Value": "<textarea.*?name=\"PostBody\".*?>.*?\\n.*?POST-HERE",
+          "AssertionType": 0
+        },
+        {
+          "Description": "Should contain expected Header Key",
+          "AssertionMethod": 0,
+          "Value": "<input.*?value=\"HEADER-KEY-HERE\"",
+          "AssertionType": 0
+        },
+        {
+          "Description": "Should contain expected Header Value",
+          "AssertionMethod": 0,
+          "Value": "<input.*?value=\"HEADER-VALUE-HERE\"",
+          "AssertionType": 0
+        },
+        {
+          "Description": "Should contain expected Captured Variable Key",
+          "AssertionMethod": 0,
+          "Value": "<input.*?value=\"CAPTURED-TEST-NAME-HERE\"",
+          "AssertionType": 0
+        },
+        {
+          "Description": "Should contain expected Captured Variable REGEX",
+          "AssertionMethod": 0,
+          "Value": "<input.*?value=\"CAPTURED-TEST-REGEX-HERE\"",
+          "AssertionType": 0
+        }
+      ],
       "BeforeExecuteScript": null
     }
   ],
