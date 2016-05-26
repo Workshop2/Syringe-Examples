@@ -1,2 +1,2 @@
 # Syringe-Examples
-A set of example XML files for the Syringe project
+A set of example test files for the Syringe project
