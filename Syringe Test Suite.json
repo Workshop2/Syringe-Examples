@@ -12,6 +12,11 @@
           "Name": "new-test-file-page-path",
           "Regex": "<a .*?title=\"Add\".*?href=\"(.*?)\">",
           "PostProcessorType": 1
+        },
+        {
+          "Name": "all-results-path",
+          "Regex": "<a.*?href=\"(.*?)\">All results",
+          "PostProcessorType": 1
         }
       ],
       "Assertions": [
@@ -97,7 +102,7 @@
       "BeforeExecuteScript": null
     },
     {
-      "Description": "Edit Test File",
+      "Description": "Edit test file",
       "Method": "GET",
       "Url": "{baseurl}{edit-test-file-path} ",
       "PostBody": null,
@@ -121,7 +126,7 @@
       "BeforeExecuteScript": null
     },
     {
-      "Description": "View Variables Page",
+      "Description": "View variables page",
       "Method": "GET",
       "Url": "{baseurl}{view-variables-path}",
       "PostBody": null,
@@ -138,7 +143,7 @@
       "BeforeExecuteScript": null
     },
     {
-      "Description": "Should Create Variable",
+      "Description": "Should create variable",
       "Method": "POST",
       "Url": "{baseurl}{edit-variables-path}",
       "PostBody": "Filename={test-file-name}.json&Variables%5B0%5D.Environment=Development&Variables%5B0%5D.Name={variable-name}&Variables%5B0%5D.Value={variable-value}",
@@ -273,7 +278,7 @@
         {
           "Description": "Should contain expected HTTP Status",
           "AssertionMethod": 0,
-          "Value": "<option selected=\"selected\" value=\"302\">Found (302)",
+          "Value": "<option selected=\"selected\" value=\"302\">Redirect \\(302\\)",
           "AssertionType": 0
         },
         {
@@ -304,6 +309,204 @@
           "Description": "Should contain expected Captured Variable REGEX",
           "AssertionMethod": 0,
           "Value": "<input.*?value=\"CAPTURED-TEST-REGEX-HERE\"",
+          "AssertionType": 0
+        }
+      ],
+      "BeforeExecuteScript": null
+    },
+    {
+      "Description": "Create runnable test",
+      "Method": "POST",
+      "Url": "{baseurl}{create-new-test-url}",
+      "PostBody": "Description=Google+Test&Url=http%3A%2F%2Fgoogle.com&Method=0&ExpectedHttpStatusCode=200&PostBody=&Assertions%5B0%5D.Description=Should+contain+the+word+google&Assertions%5B0%5D.Value=Google&Assertions%5B0%5D.AssertionType=0&Assertions%5B0%5D.AssertionMethod=0&BeforeExecuteScript=",
+      "ExpectedHttpStatusCode": 200,
+      "Headers": [],
+      "CapturedVariables": [],
+      "Assertions": [],
+      "BeforeExecuteScript": null
+    },
+    {
+      "Description": "Run new test file",
+      "Method": "POST",
+      "Url": "{baseurl}/home/run",
+      "PostBody": "filename={test-file-name}.json&environment=Development",
+      "ExpectedHttpStatusCode": 200,
+      "Headers": [],
+      "CapturedVariables": [],
+      "Assertions": [
+        {
+          "Description": "Should be running test file",
+          "AssertionMethod": 0,
+          "Value": "Running {test-file-name}.json",
+          "AssertionType": 0
+        }
+      ],
+      "BeforeExecuteScript": null
+    },
+    {
+      "Description": "View all test results",
+      "Method": "GET",
+      "Url": "{baseurl}{all-results-path} ",
+      "PostBody": null,
+      "ExpectedHttpStatusCode": 200,
+      "Headers": [],
+      "CapturedVariables": [
+        {
+          "Name": "test-run-path",
+          "Regex": "<a.*?href=\"(.*?ViewResult.*?)\">View",
+          "PostProcessorType": 1
+        }
+      ],
+      "Assertions": [
+        {
+          "Description": "Should have a test run for test file",
+          "AssertionMethod": 0,
+          "Value": "{test-file-name}",
+          "AssertionType": 0
+        }
+      ],
+      "BeforeExecuteScript": null
+    },
+    {
+      "Description": "View results of test",
+      "Method": "GET",
+      "Url": "{baseurl}{test-run-path}",
+      "PostBody": null,
+      "ExpectedHttpStatusCode": 200,
+      "Headers": [],
+      "CapturedVariables": [
+        {
+          "Name": "test-run-guid",
+          "Regex": "<input.*?name=\"id\".*?value=\"(.*?)\"",
+          "PostProcessorType": 0
+        },
+        {
+          "Name": "test-run-view-log-path",
+          "Regex": "<a.*?href=\"(.*?)\">View Log",
+          "PostProcessorType": 1
+        },
+        {
+          "Name": "test-run-view-http-log-path",
+          "Regex": "<a.*?href=\"(.*?resultId=1.*?)\">View HTTP Log",
+          "PostProcessorType": 1
+        },
+        {
+          "Name": "test-run-view-empty-html-path",
+          "Regex": "<a.*?href=\"(.*?)\">View HTML",
+          "PostProcessorType": 1
+        },
+        {
+          "Name": "test-run-view-html-path",
+          "Regex": "<a.*?href=\"(.*?resultId=1.*?)\">View HTML",
+          "PostProcessorType": 1
+        },
+        {
+          "Name": "test-run-edit-test-button",
+          "Regex": "<a.*?href=\"(.*?resultId=1.*?)\">Edit",
+          "PostProcessorType": 1
+        }
+      ],
+      "Assertions": [
+        {
+          "Description": "Should have one failed test",
+          "AssertionMethod": 0,
+          "Value": "1 tests failed",
+          "AssertionType": 0
+        },
+        {
+          "Description": "Should have one passed test",
+          "AssertionMethod": 0,
+          "Value": "1 tests passed",
+          "AssertionType": 0
+        },
+        {
+          "Description": "Should have expected title",
+          "AssertionMethod": 0,
+          "Value": "Results for {test-file-name}.json",
+          "AssertionType": 0
+        },
+        {
+          "Description": "Should have dummy test header",
+          "AssertionMethod": 0,
+          "Value": "DESCRIPTION-HERE",
+          "AssertionType": 0
+        },
+        {
+          "Description": "Should error message for dummy url",
+          "AssertionMethod": 0,
+          "Value": "URL-HERE is not a valid Uri[\\n\\r\\s]+Parameter name: url",
+          "AssertionType": 0
+        }
+      ],
+      "BeforeExecuteScript": null
+    },
+    {
+      "Description": "View test case log",
+      "Method": "GET",
+      "Url": "{baseurl}{test-run-view-log-path}",
+      "PostBody": null,
+      "ExpectedHttpStatusCode": 200,
+      "Headers": [],
+      "CapturedVariables": [],
+      "Assertions": [
+        {
+          "Description": "Should display expected error message",
+          "AssertionMethod": 0,
+          "Value": "System.ArgumentException: URL-HERE is not a valid Uri",
+          "AssertionType": 0
+        }
+      ],
+      "BeforeExecuteScript": null
+    },
+    {
+      "Description": "View test case HTTP log",
+      "Method": "GET",
+      "Url": "{baseurl}{test-run-view-http-log-path} ",
+      "PostBody": null,
+      "ExpectedHttpStatusCode": 200,
+      "Headers": [],
+      "CapturedVariables": [],
+      "Assertions": [
+        {
+          "Description": "Should query google",
+          "AssertionMethod": 0,
+          "Value": "GET http://google.com",
+          "AssertionType": 0
+        }
+      ],
+      "BeforeExecuteScript": null
+    },
+    {
+      "Description": "View test case HTML",
+      "Method": "GET",
+      "Url": "{baseurl}{test-run-view-html-path}",
+      "PostBody": null,
+      "ExpectedHttpStatusCode": 200,
+      "Headers": [],
+      "CapturedVariables": [],
+      "Assertions": [
+        {
+          "Description": "Should contain the word google",
+          "AssertionMethod": 0,
+          "Value": "Google",
+          "AssertionType": 0
+        }
+      ],
+      "BeforeExecuteScript": null
+    },
+    {
+      "Description": "View edit test case from results button",
+      "Method": "GET",
+      "Url": "{baseurl}{test-run-edit-test-button}",
+      "PostBody": null,
+      "ExpectedHttpStatusCode": 200,
+      "Headers": [],
+      "CapturedVariables": [],
+      "Assertions": [
+        {
+          "Description": "Should contain test file name",
+          "AssertionMethod": 0,
+          "Value": "{test-file-name}.json",
           "AssertionType": 0
         }
       ],
