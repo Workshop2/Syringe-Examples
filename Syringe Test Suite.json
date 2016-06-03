@@ -326,18 +326,30 @@
       "BeforeExecuteScript": null
     },
     {
-      "Description": "Run new test file",
-      "Method": "POST",
-      "Url": "{baseurl}/home/run",
-      "PostBody": "filename={test-file-name}.json&environment=Development",
+      "Description": "Run new test file and wait",
+      "Method": "GET",
+      "Url": "{serviceurl}/api/tasks/RunTestFile?filename={test-file-name}.json&environment=Development&username=Syringe-Accept-Tests",
+      "PostBody": null,
       "ExpectedHttpStatusCode": 200,
       "Headers": [],
-      "CapturedVariables": [],
+      "CapturedVariables": [
+        {
+          "Name": "test-run-guid",
+          "Regex": "\"ResultId\":.*?\\n?.*?\"(.*?)\"",
+          "PostProcessorType": 0
+        }
+      ],
       "Assertions": [
         {
-          "Description": "Should be running test file",
+          "Description": "Should complete",
           "AssertionMethod": 0,
-          "Value": "Running {test-file-name}.json",
+          "Value": "\"Completed\":.*?true",
+          "AssertionType": 0
+        },
+        {
+          "Description": "Should have failed tests",
+          "AssertionMethod": 0,
+          "Value": "\"HasFailedTests\":.*?true",
           "AssertionType": 0
         }
       ],
@@ -353,7 +365,7 @@
       "CapturedVariables": [
         {
           "Name": "test-run-path",
-          "Regex": "<a.*?href=\"(.*?ViewResult.*?)\">View",
+          "Regex": "<a.*?href=\"(.*?{test-run-guid}.*?)\">View",
           "PostProcessorType": 1
         }
       ],
@@ -362,6 +374,12 @@
           "Description": "Should have a test run for test file",
           "AssertionMethod": 0,
           "Value": "{test-file-name}",
+          "AssertionType": 0
+        },
+        {
+          "Description": "Should have test GUID on page",
+          "AssertionMethod": 0,
+          "Value": "{test-run-guid}",
           "AssertionType": 0
         }
       ],
@@ -375,11 +393,6 @@
       "ExpectedHttpStatusCode": 200,
       "Headers": [],
       "CapturedVariables": [
-        {
-          "Name": "test-run-guid",
-          "Regex": "<input.*?name=\"id\".*?value=\"(.*?)\"",
-          "PostProcessorType": 0
-        },
         {
           "Name": "test-run-view-log-path",
           "Regex": "<a.*?href=\"(.*?)\">View Log",
@@ -403,6 +416,11 @@
         {
           "Name": "test-run-edit-test-button",
           "Regex": "<a.*?href=\"(.*?resultId=1.*?)\">Edit",
+          "PostProcessorType": 1
+        },
+        {
+          "Name": "test-run-delete-path",
+          "Regex": "<form.*?action=\"(.*?Delete.*?)\"",
           "PostProcessorType": 1
         }
       ],
@@ -511,12 +529,78 @@
         }
       ],
       "BeforeExecuteScript": null
+    },
+    {
+      "Description": "Copy of Run new test file",
+      "Method": "POST",
+      "Url": "{baseurl}/home/run",
+      "PostBody": "filename={test-file-name}.json&environment=Development",
+      "ExpectedHttpStatusCode": 200,
+      "Headers": [],
+      "CapturedVariables": [],
+      "Assertions": [
+        {
+          "Description": "Should be running test file",
+          "AssertionMethod": 0,
+          "Value": "Running {test-file-name}.json",
+          "AssertionType": 0
+        }
+      ],
+      "BeforeExecuteScript": null
+    },
+    {
+      "Description": "Run new test file for deleting",
+      "Method": "GET",
+      "Url": "{serviceurl}/api/tasks/RunTestFile?filename={test-file-name}.json&environment=Development&username=Syringe-Accept-Tests",
+      "PostBody": null,
+      "ExpectedHttpStatusCode": 200,
+      "Headers": [],
+      "CapturedVariables": [
+        {
+          "Name": "test-run-guid-to-delete",
+          "Regex": "\"ResultId\":.*?\\n?.*?\"(.*?)\"",
+          "PostProcessorType": 0
+        }
+      ],
+      "Assertions": [],
+      "BeforeExecuteScript": null
+    },
+    {
+      "Description": "Delete test case",
+      "Method": "POST",
+      "Url": "{baseurl}{test-run-delete-path}",
+      "PostBody": "id={test-run-guid-to-delete}",
+      "ExpectedHttpStatusCode": 200,
+      "Headers": [],
+      "CapturedVariables": [],
+      "Assertions": [
+        {
+          "Description": "Should not contain test guid",
+          "AssertionMethod": 0,
+          "Value": "{test-run-guid-to-delete}",
+          "AssertionType": 1
+        },
+        {
+          "Description": "Should be on Results page",
+          "AssertionMethod": 0,
+          "Value": "All Results",
+          "AssertionType": 0
+        }
+      ],
+      "BeforeExecuteScript": null
     }
   ],
   "Variables": [
     {
       "Name": "baseurl",
       "Value": "http://localhost:1980",
+      "Environment": {
+        "Name": "Development"
+      }
+    },
+    {
+      "Name": "serviceurl",
+      "Value": "http://localhost:1981",
       "Environment": {
         "Name": "Development"
       }
