@@ -1,0 +1,48 @@
+{
+  "Tests": [
+    {
+      "Description": "Upload image",
+      "Method": "POST",
+      "Url": "{baseurl}",
+      "PostBody": null,
+      "ExpectedHttpStatusCode": 200,
+      "Headers": [],
+      "CapturedVariables": [
+        {
+          "Name": "deletionUrl",
+          "Regex": "(http://postimg.org/delete/.+/)<",
+          "PostProcessorType": 1
+        }
+      ],
+      "Assertions": [],
+      "BeforeExecuteScript": "using System.IO;\r\n\r\nstring fullPath = Path.Combine(Configuration.TestFilesBaseDirectory, \"cows.jpg\");\r\nRequest.AddFile(\"upload[]\", fullPath);"
+    },
+    {
+      "Description": "Delete image",
+      "Method": "POST",
+      "Url": "{deletionUrl}",
+      "PostBody": "delete=Delete",
+      "ExpectedHttpStatusCode": 200,
+      "Headers": [],
+      "CapturedVariables": [],
+      "Assertions": [
+        {
+          "Description": "Succesful post",
+          "AssertionMethod": 0,
+          "Value": "Upload another image",
+          "AssertionType": 0
+        }
+      ],
+      "BeforeExecuteScript": null
+    }
+  ],
+  "Variables": [
+    {
+      "Name": "baseurl",
+      "Value": "http://postimage.org",
+      "Environment": {
+        "Name": "Development"
+      }
+    }
+  ]
+}

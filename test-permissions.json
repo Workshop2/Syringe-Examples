@@ -1,0 +1,16 @@
+{
+  "Tests": [
+    {
+      "Description": "Run this as SyringeUser, it should fail",
+      "Method": "GET",
+      "Url": "http://www.bing.com/search",
+      "PostBody": null,
+      "ExpectedHttpStatusCode": 200,
+      "Headers": [],
+      "CapturedVariables": [],
+      "Assertions": [],
+      "BeforeExecuteScript": "System.IO.File.Delete(@\"C:\\test.txt\");"
+    }
+  ],
+  "Variables": []
+}
