@@ -23,25 +23,31 @@
         {
           "Description": "Should be running in guest mode",
           "AssertionMethod": 0,
-          "Value": "<h1>Login<\\/h1>",
+          "Value": "<h1>Login",
           "AssertionType": 1
         },
         {
           "Description": "Should display H2",
           "AssertionMethod": 0,
-          "Value": "<h2>Test Files</h2>",
+          "Value": "<h2>Test Files",
           "AssertionType": 0
         },
         {
           "Description": "Should contain add button",
           "AssertionMethod": 0,
-          "Value": "<i(.*?)>add<\\/i>",
+          "Value": "<i(.*?)>add",
           "AssertionType": 0
         },
         {
           "Description": "Should not have test file (please delete)",
           "AssertionMethod": 0,
-          "Value": "<td class=\"filename\">{test-file-name}.json<\\/td>",
+          "Value": "<td class=\"filename\">{test-file-name}.json",
+          "AssertionType": 1
+        },
+        {
+          "Description": "Should not have copy of test file (please delete)",
+          "AssertionMethod": 0,
+          "Value": "<td class=\"filename\">{test-file-copy-name}.json",
           "AssertionType": 1
         }
       ],
@@ -83,6 +89,16 @@
           "Name": "edit-test-file-path",
           "Regex": "<a title=\"View\".*?href=\"(.*?{test-file-name}\\.json)\">",
           "PostProcessorType": 1
+        },
+        {
+          "Name": "copy-test-file-path",
+          "Regex": "<form.*?action=\"(.*?Copy.*?)\".*?>",
+          "PostProcessorType": 1
+        },
+        {
+          "Name": "delete-test-file-path",
+          "Regex": "<form.*?action=\"(.*?Delete.*?)\".*?>",
+          "PostProcessorType": 0
         }
       ],
       "Assertions": [
@@ -220,7 +236,7 @@
       "BeforeExecuteScript": null
     },
     {
-      "Description": "Create new test file",
+      "Description": "Create new test",
       "Method": "POST",
       "Url": "{baseurl}{create-new-test-url}",
       "PostBody": "Description=DESCRIPTION-HERE&Url=URL-HERE&Method=1&ExpectedHttpStatusCode=302&PostBody=POST-HERE&Headers%5B0%5D.Key=HEADER-KEY-HERE&Headers%5B0%5D.Value=HEADER-VALUE-HERE&CapturedVariables%5B0%5D.Name=CAPTURED-TEST-NAME-HERE&CapturedVariables%5B0%5D.Regex=CAPTURED-TEST-REGEX-HERE&CapturedVariables%5B0%5D.PostProcessorType=1&Assertions%5B0%5D.Description=ASSERTION-TITLE-HERE&Assertions%5B0%5D.Value=ASSERTION-VAL-HERE&Assertions%5B0%5D.AssertionType=0&Assertions%5B0%5D.AssertionMethod=0&BeforeExecuteScript=SCRIPT-HERE",
@@ -231,6 +247,16 @@
           "Name": "view-test-path",
           "Regex": "<a.*?href=\"(.*?Edit.*?{test-file-name}.*?)\">",
           "PostProcessorType": 1
+        },
+        {
+          "Name": "copy-test-path",
+          "Regex": "<form.*?action=\"(.*?Copy.*?)\".*?>",
+          "PostProcessorType": 1
+        },
+        {
+          "Name": "delete-test-path",
+          "Regex": "<form.*?action=\"(.*?Delete.*?)\".*?>",
+          "PostProcessorType": 0
         }
       ],
       "Assertions": [],
@@ -566,7 +592,7 @@
       "BeforeExecuteScript": null
     },
     {
-      "Description": "Delete test case",
+      "Description": "Delete test result",
       "Method": "POST",
       "Url": "{baseurl}{test-run-delete-path}",
       "PostBody": "id={test-run-guid-to-delete}",
@@ -585,6 +611,96 @@
           "AssertionMethod": 0,
           "Value": "All Results",
           "AssertionType": 0
+        }
+      ],
+      "BeforeExecuteScript": null
+    },
+    {
+      "Description": "Copy test",
+      "Method": "POST",
+      "Url": "{baseurl}{copy-test-path}",
+      "PostBody": "filename={test-file-name}.json&position=1",
+      "ExpectedHttpStatusCode": 200,
+      "Headers": [],
+      "CapturedVariables": [],
+      "Assertions": [
+        {
+          "Description": "Copy of test should exist",
+          "AssertionMethod": 0,
+          "Value": "Copy of Google Test",
+          "AssertionType": 0
+        }
+      ],
+      "BeforeExecuteScript": null
+    },
+    {
+      "Description": "Delete test",
+      "Method": "POST",
+      "Url": "{baseurl}{delete-test-path}",
+      "PostBody": "filename={test-file-name}.json&position=2",
+      "ExpectedHttpStatusCode": 200,
+      "Headers": [],
+      "CapturedVariables": [],
+      "Assertions": [
+        {
+          "Description": "Copy of test should exist",
+          "AssertionMethod": 0,
+          "Value": "Copy of Google Test",
+          "AssertionType": 1
+        }
+      ],
+      "BeforeExecuteScript": null
+    },
+    {
+      "Description": "Copy test file",
+      "Method": "POST",
+      "Url": "{baseurl}{copy-test-file-path}",
+      "PostBody": "sourceTestFile={test-file-name}.json&targetTestFile={test-file-copy-name}",
+      "ExpectedHttpStatusCode": 200,
+      "Headers": [],
+      "CapturedVariables": [],
+      "Assertions": [
+        {
+          "Description": "Copy of test should exist",
+          "AssertionMethod": 0,
+          "Value": "{test-file-copy-name}",
+          "AssertionType": 0
+        }
+      ],
+      "BeforeExecuteScript": null
+    },
+    {
+      "Description": "Delete copy of test file",
+      "Method": "POST",
+      "Url": "{baseurl}{delete-test-file-path}",
+      "PostBody": "filename={test-file-copy-name}.json",
+      "ExpectedHttpStatusCode": 200,
+      "Headers": [],
+      "CapturedVariables": [],
+      "Assertions": [
+        {
+          "Description": "Should not have test file",
+          "AssertionMethod": 0,
+          "Value": "{test-file-copy-name}",
+          "AssertionType": 1
+        }
+      ],
+      "BeforeExecuteScript": null
+    },
+    {
+      "Description": "Delete original test file",
+      "Method": "POST",
+      "Url": "{baseurl}{delete-test-file-path}",
+      "PostBody": "filename={test-file-name}.json",
+      "ExpectedHttpStatusCode": 200,
+      "Headers": [],
+      "CapturedVariables": [],
+      "Assertions": [
+        {
+          "Description": "Should not have test file",
+          "AssertionMethod": 0,
+          "Value": "{test-file-name}",
+          "AssertionType": 1
         }
       ],
       "BeforeExecuteScript": null
@@ -622,6 +738,13 @@
     {
       "Name": "variable-value",
       "Value": "TEST-VARIABLE-VALUE",
+      "Environment": {
+        "Name": "Development"
+      }
+    },
+    {
+      "Name": "test-file-copy-name",
+      "Value": "test-copy-of-syringe-acceptance-test",
       "Environment": {
         "Name": "Development"
       }
