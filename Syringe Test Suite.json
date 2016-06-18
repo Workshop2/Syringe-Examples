@@ -711,42 +711,42 @@
       "Name": "baseurl",
       "Value": "http://localhost:1980",
       "Environment": {
-        "Name": "Development"
+        "Name": ""
       }
     },
     {
       "Name": "serviceurl",
       "Value": "http://localhost:1981",
       "Environment": {
-        "Name": "Development"
+        "Name": ""
       }
     },
     {
       "Name": "test-file-name",
       "Value": "syringe-acceptance-test",
       "Environment": {
-        "Name": "Development"
+        "Name": ""
       }
     },
     {
       "Name": "variable-name",
       "Value": "TEST-VARIABLE-NAME",
       "Environment": {
-        "Name": "Development"
+        "Name": ""
       }
     },
     {
       "Name": "variable-value",
       "Value": "TEST-VARIABLE-VALUE",
       "Environment": {
-        "Name": "Development"
+        "Name": ""
       }
     },
     {
       "Name": "test-file-copy-name",
       "Value": "test-copy-of-syringe-acceptance-test",
       "Environment": {
-        "Name": "Development"
+        "Name": ""
       }
     }
   ]
