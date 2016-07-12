@@ -223,13 +223,19 @@
         {
           "Description": "Should display available variables",
           "AssertionMethod": 0,
-          "Value": "<strong>Available variables<\\/strong>",
+          "Value": "<h3.*?>Available variables<\\/h3>",
           "AssertionType": 0
         },
         {
-          "Description": "Should contain created variables",
+          "Description": "Should contain  variables name input",
           "AssertionMethod": 0,
-          "Value": "{{variable-name}} - {variable-value}",
+          "Value": "<input.*?id=\"{variable-name}\".*?value=\"{{variable-name}}\".*?>",
+          "AssertionType": 0
+        },
+        {
+          "Description": "Should contain  variables value input",
+          "AssertionMethod": 0,
+          "Value": "<input.*?value=\"{variable-value}\".*?>",
           "AssertionType": 0
         }
       ],
@@ -269,18 +275,36 @@
       "PostBody": null,
       "ExpectedHttpStatusCode": 200,
       "Headers": [],
-      "CapturedVariables": [],
+      "CapturedVariables": [
+        {
+          "Name": "cancel-test-path",
+          "Regex": "<a.*?href=\"(.*?)\".*?>Cancel",
+          "PostProcessorType": 1
+        }
+      ],
       "Assertions": [
         {
-          "Description": "Should contain created variables",
+          "Description": "Should contain captured variables name input",
           "AssertionMethod": 0,
-          "Value": "{{variable-name}} - {variable-value}",
+          "Value": "<input.*?id=\"CAPTURED-TEST-NAME-HERE\".*?value=\"{CAPTURED-TEST-NAME-HERE}\".*?>",
           "AssertionType": 0
         },
         {
-          "Description": "Should contain captured variable",
+          "Description": "Should contain captured variables value input",
           "AssertionMethod": 0,
-          "Value": "{CAPTURED-TEST-NAME-HERE} - CAPTURED-TEST-REGEX-HERE",
+          "Value": "<input.*?value=\"CAPTURED-TEST-REGEX-HERE\".*?>",
+          "AssertionType": 0
+        },
+        {
+          "Description": "Should contain variables name input",
+          "AssertionMethod": 0,
+          "Value": "<input.*?id=\"{variable-name}\".*?value=\"{{variable-name}}\".*?>",
+          "AssertionType": 0
+        },
+        {
+          "Description": "Should contain variables value input",
+          "AssertionMethod": 0,
+          "Value": "<input.*?value=\"{variable-value}\".*?>",
           "AssertionType": 0
         },
         {
@@ -318,26 +342,25 @@
           "AssertionMethod": 0,
           "Value": "<input.*?value=\"HEADER-KEY-HERE\"",
           "AssertionType": 0
-        },
-        {
-          "Description": "Should contain expected Header Value",
-          "AssertionMethod": 0,
-          "Value": "<input.*?value=\"HEADER-VALUE-HERE\"",
-          "AssertionType": 0
-        },
-        {
-          "Description": "Should contain expected Captured Variable Key",
-          "AssertionMethod": 0,
-          "Value": "<input.*?value=\"CAPTURED-TEST-NAME-HERE\"",
-          "AssertionType": 0
-        },
-        {
-          "Description": "Should contain expected Captured Variable REGEX",
-          "AssertionMethod": 0,
-          "Value": "<input.*?value=\"CAPTURED-TEST-REGEX-HERE\"",
-          "AssertionType": 0
         }
       ],
+      "BeforeExecuteScript": null
+    },
+    {
+      "Description": "Cancel test case",
+      "Method": "GET",
+      "Url": "{baseurl}{cancel-test-path}",
+      "PostBody": null,
+      "ExpectedHttpStatusCode": 200,
+      "Headers": [],
+      "CapturedVariables": [
+        {
+          "Name": "view-test-path",
+          "Regex": "<a.*?href=\"(.*?Edit.*?{test-file-name}.*?)\">",
+          "PostProcessorType": 1
+        }
+      ],
+      "Assertions": [],
       "BeforeExecuteScript": null
     },
     {
