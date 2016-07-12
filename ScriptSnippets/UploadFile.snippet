@@ -1,0 +1,4 @@
+using System.IO;
+
+string fullPath = Path.Combine(Configuration.TestFilesBaseDirectory, "cows.jpg");
+Request.AddFile("upload[]", fullPath);
