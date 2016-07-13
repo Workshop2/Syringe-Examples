@@ -10,12 +10,12 @@
       "CapturedVariables": [
         {
           "Name": "new-test-file-page-path",
-          "Regex": "<a .*?title=\"Add\".*?href=\"(.*?)\">",
+          "Regex": "<a .*?title=\"Add Test File\".*?href=\"(.*?)\">",
           "PostProcessorType": 1
         },
         {
           "Name": "all-results-path",
-          "Regex": "<a.*?href=\"(.*?)\">All results",
+          "Regex": "<a.*?href=\"(.*?)\".*?>All results",
           "PostProcessorType": 1
         }
       ],
@@ -87,7 +87,7 @@
       "CapturedVariables": [
         {
           "Name": "edit-test-file-path",
-          "Regex": "<a title=\"View\".*?href=\"(.*?{test-file-name}\\.json)\">",
+          "Regex": "<a title=\"Edit Test File\".*?href=\"(.*?{test-file-name}\\.json)\">",
           "PostProcessorType": 1
         },
         {
@@ -223,7 +223,7 @@
         {
           "Description": "Should display available variables",
           "AssertionMethod": 0,
-          "Value": "<h3.*?>Available variables<\\/h3>",
+          "Value": "Available variables",
           "AssertionType": 0
         },
         {
