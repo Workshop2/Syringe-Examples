@@ -15,7 +15,9 @@
         }
       ],
       "Assertions": [],
-      "BeforeExecuteScript": "using System.IO;\r\n\r\nstring fullPath = Path.Combine(Configuration.TestFilesBaseDirectory, \"cows.jpg\");\r\nRequest.AddFile(\"upload[]\", fullPath);"
+      "ScriptSnippets": {
+        "BeforeExecuteFilename": "UploadFile.snippet"
+      }
     },
     {
       "Description": "Delete image",
@@ -33,7 +35,9 @@
           "AssertionType": 0
         }
       ],
-      "BeforeExecuteScript": null
+      "ScriptSnippets": {
+        "BeforeExecuteFilename": null
+      }
     }
   ],
   "Variables": [

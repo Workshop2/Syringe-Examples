@@ -9,7 +9,9 @@
       "Headers": [],
       "CapturedVariables": [],
       "Assertions": [],
-      "BeforeExecuteScript": "System.IO.File.Delete(@\"C:\\test.txt\");"
+      "ScriptSnippets": {
+        "BeforeExecuteFilename": null
+      }
     }
   ],
   "Variables": []
