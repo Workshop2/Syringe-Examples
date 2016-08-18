@@ -505,13 +505,13 @@
         {
           "Description": "Should have one failed test",
           "AssertionMethod": 0,
-          "Value": "1 tests failed",
+          "Value": "1.*? Tests Failed",
           "AssertionType": 0
         },
         {
           "Description": "Should have one passed test",
           "AssertionMethod": 0,
-          "Value": "1 tests passed",
+          "Value": "1.*? Tests Passed",
           "AssertionType": 0
         },
         {
