@@ -401,7 +401,7 @@
     {
       "Description": "Run new test file and wait",
       "Method": "GET",
-      "Url": "{serviceurl}/api/tasks/RunTestFile?filename={test-file-name}.json&environment=Development&username=Syringe-Accept-Tests",
+      "Url": "{serviceurl}/api/task/runTestFile?filename={test-file-name}.json&environment=Development&username=Syringe-Accept-Tests",
       "PostBody": null,
       "ExpectedHttpStatusCode": 200,
       "Headers": [],
@@ -640,7 +640,7 @@
     {
       "Description": "Run new test file for deleting",
       "Method": "GET",
-      "Url": "{serviceurl}/api/tasks/RunTestFile?filename={test-file-name}.json&environment=Development&username=Syringe-Accept-Tests",
+      "Url": "{serviceurl}/api/task/runTestFile?filename={test-file-name}.json&environment=Development&username=Syringe-Accept-Tests",
       "PostBody": null,
       "ExpectedHttpStatusCode": 200,
       "Headers": [],
