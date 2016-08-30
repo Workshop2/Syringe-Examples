@@ -416,7 +416,7 @@
         {
           "Description": "Should complete",
           "AssertionMethod": 0,
-          "Value": "\"Completed\":.*?true",
+          "Value": "\"Finished\":.*?true",
           "AssertionType": 0
         },
         {
