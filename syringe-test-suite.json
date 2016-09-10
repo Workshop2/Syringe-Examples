@@ -17,6 +17,21 @@
           "Name": "all-results-path",
           "Regex": "<a.*?href=\"(.*?)\".*?>All results",
           "PostProcessorType": 1
+        },
+        {
+          "Name": "settings-path",
+          "Regex": "<a.*?href=\"(.*?)\".*?>Settings",
+          "PostProcessorType": 1
+        },
+        {
+          "Name": "encryption-path",
+          "Regex": "<a.*?href=\"(.*?)\".*?>Encrypt data",
+          "PostProcessorType": 1
+        },
+        {
+          "Name": "todays-results-path",
+          "Regex": "<a.*?href=\"(.*?)\".*?>Today&#39;s results",
+          "PostProcessorType": 1
         }
       ],
       "Assertions": [
@@ -618,7 +633,7 @@
       }
     },
     {
-      "Description": "Copy of Run new test file",
+      "Description": "Run new test file",
       "Method": "POST",
       "Url": "{baseurl}/home/run",
       "PostBody": "filename={test-file-name}.json&environment=Development",
@@ -776,6 +791,78 @@
           "AssertionMethod": 0,
           "Value": "{test-file-name}",
           "AssertionType": 1
+        }
+      ],
+      "ScriptSnippets": {
+        "BeforeExecuteFilename": null
+      }
+    },
+    {
+      "Description": "Check Settings Page",
+      "Method": "GET",
+      "Url": "{baseurl}{settings-path}",
+      "PostBody": null,
+      "ExpectedHttpStatusCode": 200,
+      "Headers": [],
+      "CapturedVariables": [],
+      "Assertions": [
+        {
+          "Description": "Ensure page loads",
+          "AssertionMethod": 0,
+          "Value": "<h2>System Variables",
+          "AssertionType": 0
+        }
+      ],
+      "ScriptSnippets": {
+        "BeforeExecuteFilename": null
+      }
+    },
+    {
+      "Description": "Check Encrypt data page",
+      "Method": "GET",
+      "Url": "{baseurl}{encryption-path}",
+      "PostBody": null,
+      "ExpectedHttpStatusCode": 200,
+      "Headers": [],
+      "CapturedVariables": [],
+      "Assertions": [
+        {
+          "Description": "Ensure page loads",
+          "AssertionMethod": 0,
+          "Value": "<h1>Encrypt variable data",
+          "AssertionType": 0
+        }
+      ],
+      "ScriptSnippets": {
+        "BeforeExecuteFilename": null
+      }
+    },
+    {
+      "Description": "View all test results for Today",
+      "Method": "GET",
+      "Url": "{baseurl}{todays-results-path}",
+      "PostBody": null,
+      "ExpectedHttpStatusCode": 200,
+      "Headers": [],
+      "CapturedVariables": [
+        {
+          "Name": "test-run-path",
+          "Regex": "<a.*?href=\"(.*?{test-run-guid}.*?)\">View",
+          "PostProcessorType": 1
+        }
+      ],
+      "Assertions": [
+        {
+          "Description": "Should have a test run for test file",
+          "AssertionMethod": 0,
+          "Value": "{test-file-name}",
+          "AssertionType": 0
+        },
+        {
+          "Description": "Should have test GUID on page",
+          "AssertionMethod": 0,
+          "Value": "{test-run-guid}",
+          "AssertionType": 0
         }
       ],
       "ScriptSnippets": {
